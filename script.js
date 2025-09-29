@@ -1,14 +1,14 @@
 const calculatorDisplay = document.getElementById("calculator-display");
-const numberButtons = document.getElementsByClassName("calculator-button");
 
 //TODO: add a way to track the operator last used
 //TODO: add variable to track the last number that was on the display
 
-for (let i = 0; i < numberButtons.length; i++) {
-    numberButtons[i].addEventListener('click', () => {
-        calculatorDisplay.textContent += numberButtons[i].textContent;
-    });
-}
+const buttonWrapper = document.querySelector(".number-buttons-wrapper");
+buttonWrapper.addEventListener('click', (event) => {
+    if (event.target.classList.contains('calculator-button')) {
+        calculatorDisplay.textContent += event.target.textContent;
+    }
+})
 
 function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
