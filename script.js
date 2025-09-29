@@ -29,16 +29,16 @@ function multiply(firstNumber, secondNumber) {
 function calculate(operator, firstNumber, secondNumber) {
     switch (operator) {
         case "+":
-            displayContent = add(firstNumber, secondNumber);
+            calculatorDisplay.textContent = add(firstNumber, secondNumber);
             break;
         case "-":
-            displayContent = subtract(firstNumber, secondNumber);
+            calculatorDisplay.textContent = subtract(firstNumber, secondNumber);
             break;
         case "/":
-            displayContent = divide(firstNumber, secondNumber);
+            calculatorDisplay.textContent = divide(firstNumber, secondNumber);
             break;
         case "*":
-            displayContent = multiply(firstNumber, secondNumber);
+            calculatorDisplay.textContent = multiply(firstNumber, secondNumber);
             break;
     }
 }
