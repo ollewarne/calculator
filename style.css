@@ -30,6 +30,11 @@ body {
     width: 100%;
     background-color: turquoise;
     align-self: center;
+    font-size: 1.2em;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .calculator-button {
