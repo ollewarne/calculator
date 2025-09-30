@@ -62,24 +62,45 @@ equalsButton.addEventListener('click', () => {
 
 const addButton = document.getElementById("add-button");
 addButton.addEventListener('click', () => {
-    lastOperator = "+";
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (calculatorDisplay.textContent.slice(-2).includes(lastOperator) || calculatorDisplay.textContent === "") {
+    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
+        console.log(lastOperator);
         return;
-    } else calculatorDisplay.textContent += " + ";
+    } else {
+        lastOperator = "+";
+        calculatorDisplay.textContent += " + ";
+    }
 })
 
 const subtractButton = document.getElementById("subtract-button");
 subtractButton.addEventListener('click', () => {
-    console.log("subtract");
+    // only add operator to display if it is not empty or you press multiple operator buttons
+    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
+        return;
+    } else {
+        lastOperator = "-";
+        calculatorDisplay.textContent += " - ";
+    }
 })
 
 const divideButton = document.getElementById("divide-button");
 divideButton.addEventListener('click', () => {
-    console.log("divide");
+    // only add operator to display if it is not empty or you press multiple operator buttons
+    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
+        return;
+    } else {
+        lastOperator = "/";
+        calculatorDisplay.textContent += " / ";
+    }
 })
 
 const multiplyButton = document.getElementById("multiply-button");
 multiplyButton.addEventListener('click', () => {
-    console.log("multiply");
+    // only add operator to display if it is not empty or you press multiple operator buttons
+    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
+        return;
+    } else {
+        lastOperator = "*";
+        calculatorDisplay.textContent += " * ";
+    }
 })
