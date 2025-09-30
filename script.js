@@ -1,8 +1,6 @@
 const calculatorDisplay = document.getElementById("calculator-display");
 
-//TODO: add a way to track the operator last used
-//TODO: add variable to track the last number that was on the display
-
+// get all buttons for the numbers and use the textcontent to know which button it is
 const buttonWrapper = document.querySelector(".number-buttons-wrapper");
 buttonWrapper.addEventListener('click', (event) => {
     if (event.target.classList.contains('calculator-button')) {
@@ -43,8 +41,6 @@ function calculate(operator, firstNumber, secondNumber) {
     }
 }
 
-//TODO: add eventlistners for all system buttons
-
 const eraseButton = document.getElementById("erase-calc-button");
 eraseButton.addEventListener('click', () => {
     calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -1);
@@ -54,3 +50,28 @@ const clearButton = document.getElementById("clear-display-button");
 clearButton.addEventListener('click', () => {
     calculatorDisplay.textContent = "";
 });
+
+const equalsButton = document.getElementById("equals-button");
+equalsButton.addEventListener('click', () => {
+    console.log("equals");
+})
+
+const addButton = document.getElementById("add-button");
+addButton.addEventListener('click', () => {
+    console.log("add");
+})
+
+const subtractButton = document.getElementById("subtract-button");
+subtractButton.addEventListener('click', () => {
+    console.log("subtract");
+})
+
+const divideButton = document.getElementById("divide-button");
+divideButton.addEventListener('click', () => {
+    console.log("divide");
+})
+
+const multiplyButton = document.getElementById("multiply-button");
+multiplyButton.addEventListener('click', () => {
+    console.log("multiply");
+})
