@@ -1,9 +1,13 @@
 const calculatorDisplay = document.getElementById("calculator-display");
 
+let lastOperator = "";
+let lastNumber = 0;
+
 // get all buttons for the numbers and use the textcontent to know which button it is
 const buttonWrapper = document.querySelector(".number-buttons-wrapper");
 buttonWrapper.addEventListener('click', (event) => {
     if (event.target.classList.contains('calculator-button')) {
+        lastOperator = "";
         calculatorDisplay.textContent += event.target.textContent;
     }
 })
@@ -58,7 +62,11 @@ equalsButton.addEventListener('click', () => {
 
 const addButton = document.getElementById("add-button");
 addButton.addEventListener('click', () => {
-    console.log("add");
+    lastOperator = "+";
+    // only add operator to display if it is not empty or you press multiple operator buttons
+    if (calculatorDisplay.textContent.slice(-2).includes(lastOperator) || calculatorDisplay.textContent === "") {
+        return;
+    } else calculatorDisplay.textContent += " + ";
 })
 
 const subtractButton = document.getElementById("subtract-button");
