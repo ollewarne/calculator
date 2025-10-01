@@ -63,8 +63,11 @@ clearButton.addEventListener('click', () => {
 
 const equalsButton = document.getElementById("equals-button");
 equalsButton.addEventListener('click', () => {
-    console.log("equals");
-    //TODO: run calculate function with last num, operator and current num.
+    let numbersToCalculate = calculatorDisplay.textContent.split(" ");
+    if (numbersToCalculate.length < 3) return;
+    lastNumber = parseInt(numbersToCalculate[0]);
+    let currentNumber = parseInt(numbersToCalculate[2]);
+    calculate(numbersToCalculate[1], lastNumber, currentNumber);
 })
 
 //TODO: if add, subtract, divide or multiply is clicked after you already have two numbers. Run calculate function.
