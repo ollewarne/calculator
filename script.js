@@ -58,8 +58,13 @@ function calculate(operator, firstNumber, secondNumber) {
 
 const eraseButton = document.getElementById("erase-calc-button");
 eraseButton.addEventListener('click', () => {
+    // delete rest of negative number instead of leaving a - behind
+    if (calculatorDisplay.textContent.length === 2 && calculatorDisplay.textContent[0] === "-") {
+        calculatorDisplay.textContent = "";
+    }
     // since operators are wrapped in spaces we check if it is a space and then remove three characters instead
     if (calculatorDisplay.textContent.slice(-1) === " ") {
+        lastButtonWasOperator = false;
         calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -3);
     } else calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -1);
 });
@@ -68,6 +73,8 @@ const clearButton = document.getElementById("clear-display-button");
 clearButton.addEventListener('click', () => {
     calculatorDisplay.textContent = "";
     firstNumber = 0;
+    secondNumber = 0;
+    operator = "";
     lastButtonWasOperator = false;
 });
 
