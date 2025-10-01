@@ -1,16 +1,26 @@
 const calculatorDisplay = document.getElementById("calculator-display");
 
-let lastOperator = "";
-let lastNumber = 0;
+let lastButtonWasOperator = false;
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = "";
+let numbersToCalculate = [];
 
 // get all buttons for the numbers and use the textcontent to know which button it is
 const buttonWrapper = document.querySelector(".number-buttons-wrapper");
 buttonWrapper.addEventListener('click', (event) => {
     if (event.target.classList.contains('calculator-button')) {
-        lastOperator = "";
+        lastButtonWasOperator = false;
         calculatorDisplay.textContent += event.target.textContent;
     }
 })
+
+function getNumbersAndOperator() {
+    numbersToCalculate = calculatorDisplay.textContent.split(" ");
+    firstNumber = parseInt(numbersToCalculate[0]);
+    secondNumber = parseInt(numbersToCalculate[2]);
+    operator = numbersToCalculate[1];
+}
 
 // Is this the best way to do this? Should these functions be inside of the calculate function instead?
 function add(firstNumber, secondNumber) {
@@ -57,17 +67,17 @@ eraseButton.addEventListener('click', () => {
 const clearButton = document.getElementById("clear-display-button");
 clearButton.addEventListener('click', () => {
     calculatorDisplay.textContent = "";
-    lastNumber = 0;
-    lastOperator = "";
+    firstNumber = 0;
+    lastButtonWasOperator = false;
 });
 
 const equalsButton = document.getElementById("equals-button");
 equalsButton.addEventListener('click', () => {
     let numbersToCalculate = calculatorDisplay.textContent.split(" ");
     if (numbersToCalculate.length < 3) return;
-    lastNumber = parseInt(numbersToCalculate[0]);
+    firstNumber = parseInt(numbersToCalculate[0]);
     let currentNumber = parseInt(numbersToCalculate[2]);
-    calculate(numbersToCalculate[1], lastNumber, currentNumber);
+    calculate(numbersToCalculate[1], firstNumber, currentNumber);
 })
 
 //TODO: if add, subtract, divide or multiply is clicked after you already have two numbers. Run calculate function.
@@ -75,11 +85,11 @@ equalsButton.addEventListener('click', () => {
 const addButton = document.getElementById("add-button");
 addButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
-        console.log(lastOperator);
+    if (!lastButtonWasOperator || calculatorDisplay.textContent === "") {
+        console.log(lastButtonWasOperator);
         return;
     } else {
-        lastOperator = "+";
+        lastButtonWasOperator = true;
         calculatorDisplay.textContent += " + ";
     }
 })
@@ -87,10 +97,10 @@ addButton.addEventListener('click', () => {
 const subtractButton = document.getElementById("subtract-button");
 subtractButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
+    if (!lastButtonWasOperator || calculatorDisplay.textContent === "") {
         return;
     } else {
-        lastOperator = "-";
+        lastButtonWasOperator = true;
         calculatorDisplay.textContent += " - ";
     }
 })
@@ -98,10 +108,10 @@ subtractButton.addEventListener('click', () => {
 const divideButton = document.getElementById("divide-button");
 divideButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
+    if (!lastButtonWasOperator || calculatorDisplay.textContent === "") {
         return;
     } else {
-        lastOperator = "/";
+        lastButtonWasOperator = true;
         calculatorDisplay.textContent += " / ";
     }
 })
@@ -109,10 +119,10 @@ divideButton.addEventListener('click', () => {
 const multiplyButton = document.getElementById("multiply-button");
 multiplyButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastOperator !== "" || calculatorDisplay.textContent === "") {
+    if (!lastButtonWasOperator || calculatorDisplay.textContent === "") {
         return;
     } else {
-        lastOperator = "*";
+        lastButtonWasOperator = true;
         calculatorDisplay.textContent += " * ";
     }
 })
