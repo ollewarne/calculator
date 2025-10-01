@@ -57,7 +57,8 @@ eraseButton.addEventListener('click', () => {
 const clearButton = document.getElementById("clear-display-button");
 clearButton.addEventListener('click', () => {
     calculatorDisplay.textContent = "";
-    //TODO: clear last number and operator
+    lastNumber = 0;
+    lastOperator = "";
 });
 
 const equalsButton = document.getElementById("equals-button");
