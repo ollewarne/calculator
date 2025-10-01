@@ -56,6 +56,8 @@ function calculate(operator, firstNumber, secondNumber) {
     }
 }
 
+//TODO: add a button to write a dot to enable calculating floats
+
 const eraseButton = document.getElementById("erase-calc-button");
 eraseButton.addEventListener('click', () => {
     // delete rest of negative number instead of leaving a - behind
@@ -98,6 +100,7 @@ addButton.addEventListener('click', () => {
     }
 })
 
+//TODO: add ability to write negative numbers
 const subtractButton = document.getElementById("subtract-button");
 subtractButton.addEventListener('click', () => {
     getNumbersAndOperator();
