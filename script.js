@@ -77,13 +77,13 @@ equalsButton.addEventListener('click', () => {
     calculate(operator, firstNumber, secondNumber);
 })
 
-//TODO: if add, subtract, divide or multiply is clicked after you already have two numbers. Run calculate function.
-//TODO: save last number on click, so it can be used in calculate.
 const addButton = document.getElementById("add-button");
 addButton.addEventListener('click', () => {
-    // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
-        console.log(lastButtonWasOperator);
+    getNumbersAndOperator();
+    if (numbersToCalculate.length === 3) {
+        calculate(operator, firstNumber, secondNumber);
+    } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
+        // only add operator to display if it is not empty or you press multiple operator buttons
         return;
     } else {
         lastButtonWasOperator = true;
@@ -94,7 +94,11 @@ addButton.addEventListener('click', () => {
 const subtractButton = document.getElementById("subtract-button");
 subtractButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
+    getNumbersAndOperator();
+    if (numbersToCalculate.length === 3) {
+        calculate(operator, firstNumber, secondNumber);
+    } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
+        // only add operator to display if it is not empty or you press multiple operator buttons
         return;
     } else {
         lastButtonWasOperator = true;
@@ -105,7 +109,11 @@ subtractButton.addEventListener('click', () => {
 const divideButton = document.getElementById("divide-button");
 divideButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
+    getNumbersAndOperator();
+    if (numbersToCalculate.length === 3) {
+        calculate(operator, firstNumber, secondNumber);
+    } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
+        // only add operator to display if it is not empty or you press multiple operator buttons
         return;
     } else {
         lastButtonWasOperator = true;
@@ -116,7 +124,11 @@ divideButton.addEventListener('click', () => {
 const multiplyButton = document.getElementById("multiply-button");
 multiplyButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
-    if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
+    getNumbersAndOperator();
+    if (numbersToCalculate.length === 3) {
+        calculate(operator, firstNumber, secondNumber);
+    } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
+        // only add operator to display if it is not empty or you press multiple operator buttons
         return;
     } else {
         lastButtonWasOperator = true;
