@@ -12,6 +12,7 @@ buttonWrapper.addEventListener('click', (event) => {
     }
 })
 
+// Is this the best way to do this? Should these functions be inside of the calculate function instead?
 function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
@@ -48,18 +49,23 @@ function calculate(operator, firstNumber, secondNumber) {
 const eraseButton = document.getElementById("erase-calc-button");
 eraseButton.addEventListener('click', () => {
     calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -1);
+    //TODO: remove last operator nicely if needed. Remove until you reach last calculated number.
 });
 
 const clearButton = document.getElementById("clear-display-button");
 clearButton.addEventListener('click', () => {
     calculatorDisplay.textContent = "";
+    //TODO: clear last number and operator
 });
 
 const equalsButton = document.getElementById("equals-button");
 equalsButton.addEventListener('click', () => {
     console.log("equals");
+    //TODO: run calculate function with last num, operator and current num.
 })
 
+//TODO: if add, subtract, divide or multiply is clicked after you already have two numbers. Run calculate function.
+//TODO: save last number on click, so it can be used in calculate.
 const addButton = document.getElementById("add-button");
 addButton.addEventListener('click', () => {
     // only add operator to display if it is not empty or you press multiple operator buttons
