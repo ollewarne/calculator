@@ -93,7 +93,6 @@ addButton.addEventListener('click', () => {
 
 const subtractButton = document.getElementById("subtract-button");
 subtractButton.addEventListener('click', () => {
-    // only add operator to display if it is not empty or you press multiple operator buttons
     getNumbersAndOperator();
     if (numbersToCalculate.length === 3) {
         calculate(operator, firstNumber, secondNumber);
@@ -108,7 +107,6 @@ subtractButton.addEventListener('click', () => {
 
 const divideButton = document.getElementById("divide-button");
 divideButton.addEventListener('click', () => {
-    // only add operator to display if it is not empty or you press multiple operator buttons
     getNumbersAndOperator();
     if (numbersToCalculate.length === 3) {
         calculate(operator, firstNumber, secondNumber);
@@ -123,7 +121,6 @@ divideButton.addEventListener('click', () => {
 
 const multiplyButton = document.getElementById("multiply-button");
 multiplyButton.addEventListener('click', () => {
-    // only add operator to display if it is not empty or you press multiple operator buttons
     getNumbersAndOperator();
     if (numbersToCalculate.length === 3) {
         calculate(operator, firstNumber, secondNumber);
