@@ -48,8 +48,10 @@ function calculate(operator, firstNumber, secondNumber) {
 
 const eraseButton = document.getElementById("erase-calc-button");
 eraseButton.addEventListener('click', () => {
-    calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -1);
-    //TODO: remove last operator nicely if needed. Remove until you reach last calculated number.
+    // since operators are wrapped in spaces we check if it is a space and then remove three characters instead
+    if (calculatorDisplay.textContent.slice(-1) === " ") {
+        calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -3);
+    } else calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -1);
 });
 
 const clearButton = document.getElementById("clear-display-button");
