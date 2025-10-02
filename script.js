@@ -91,6 +91,8 @@ addButton.addEventListener('click', () => {
     getNumbersAndOperator();
     if (numbersToCalculate.length === 3) {
         calculate(operator, firstNumber, secondNumber);
+        lastButtonWasOperator = true;
+        calculatorDisplay.textContent += " + ";
     } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
         // only add operator to display if it is not empty or you press multiple operator buttons
         return;
@@ -100,15 +102,16 @@ addButton.addEventListener('click', () => {
     }
 })
 
-//TODO: add ability to write negative numbers
 const subtractButton = document.getElementById("subtract-button");
 subtractButton.addEventListener('click', () => {
     getNumbersAndOperator();
-    if (numbersToCalculate.length === 3) {
+    // check if number is not a number befor running calculation. Otherwise you can't write a negative second number
+    if (numbersToCalculate.length === 3 && !isNaN(secondNumber)) {
         calculate(operator, firstNumber, secondNumber);
-    } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
-        // only add operator to display if it is not empty or you press multiple operator buttons
-        return;
+        lastButtonWasOperator = true;
+        calculatorDisplay.textContent += " - ";
+    } else if (calculatorDisplay.textContent === "" || calculatorDisplay.textContent.slice(-1) === " ") {
+        calculatorDisplay.textContent += "-"
     } else {
         lastButtonWasOperator = true;
         calculatorDisplay.textContent += " - ";
@@ -120,6 +123,8 @@ divideButton.addEventListener('click', () => {
     getNumbersAndOperator();
     if (numbersToCalculate.length === 3) {
         calculate(operator, firstNumber, secondNumber);
+        lastButtonWasOperator = true;
+        calculatorDisplay.textContent += " / ";
     } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
         // only add operator to display if it is not empty or you press multiple operator buttons
         return;
@@ -134,6 +139,8 @@ multiplyButton.addEventListener('click', () => {
     getNumbersAndOperator();
     if (numbersToCalculate.length === 3) {
         calculate(operator, firstNumber, secondNumber);
+        lastButtonWasOperator = true;
+        calculatorDisplay.textContent += " * ";
     } else if (lastButtonWasOperator || calculatorDisplay.textContent === "") {
         // only add operator to display if it is not empty or you press multiple operator buttons
         return;
